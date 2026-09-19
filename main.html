@@ -5,12 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celeris Robotics | FTC Robotics Team</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="home.css">
+    <script>
+        /* decide whether to play the intro (once per session, or force with ?intro) */
+        (function () {
+            try {
+                var force = /[?&]intro\b/.test(location.search);
+                if (force || !sessionStorage.getItem('celerisIntro')) {
+                    document.documentElement.classList.add('intro-running');
+                    sessionStorage.setItem('celerisIntro', '1');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script src="index.js"></script>
 </head>
 <body>
+
+<!-- INTRO ANIMATION -->
+<div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-bg"></div>
+    <span class="intro-word intro-word-left">CELERIS</span>
+    <div class="intro-logo">
+        <img class="intro-logo-word" src="wordLogo.png" alt="">
+        <img class="intro-logo-plain" src="plainLogo.png" alt="">
+    </div>
+    <span class="intro-word intro-word-right">ROBOTICS</span>
+</div>
+
 <nav class="navbar">
     <div class="nav-brand">
-        CELERIS <span>ROBOTICS</span>
+        <strong class="nav-word">CELERIS</strong>
+        <img class="nav-logo" id="nav-logo" src="plainLogo.png" alt="Celeris Robotics logo">
+        <span class="nav-word">ROBOTICS</span>
     </div>
     <ul class="nav-links">
         <li><a href="main.html" class="active">Home</a></li>
@@ -22,108 +50,240 @@
     </ul>
     <a href="contact.html" class="nav-button">Join Our Journey <span>→</span></a>
 </nav>
+
 <main>
-    <section class="hero">
-        <div class="hero-content">
-            <p class="eyebrow">FIRST TECH CHALLENGE <span>•</span> STUDENT ROBOTICS</p>
-            <h1>CELERIS<br>ROBOTICS</h1>
-            <div class="tagline">
-                <div></div>
-                <p>BUILD. COMPETE. IMPACT.</p>
-            </div>
-            <p class="hero-description">We are a student-driven <strong>FIRST Tech Challenge</strong> robotics team engineering, programming, and competing with purpose.</p>
-            <div class="team-info">
-                <div class="team-info-item">
-                    <span class="team-info-label">PROGRAM</span>
-                    <strong>FTC</strong>
-                </div>
-                <div class="team-info-item">
-                    <span class="team-info-label">TEAM</span>
-                    <strong>CELERIS</strong>
-                </div>
-                <div class="team-info-item">
-                    <span class="team-info-label">MISSION</span>
-                    <strong>INNOVATE</strong>
-                </div>
-            </div>
+
+    <!-- HERO -->
+    <section class="home-hero">
+        <div class="home-hero-copy">
+            <p class="home-eyebrow">FIRST TECH CHALLENGE</p>
+            <h1>WE BUILD<br><span>FAST.</span></h1>
+            <p class="home-lead">Celeris Robotics is a student-driven <strong>FIRST Tech Challenge</strong> team engineering, programming, and competing with purpose.</p>
             <div class="hero-buttons">
-                <a href="season.html" class="button primary-button">Our Season <span>→</span></a>
+                <a href="robot.html" class="button primary-button">See the Robot <span>→</span></a>
                 <a href="about.html" class="button secondary-button">Meet Celeris <span>→</span></a>
             </div>
         </div>
-        <div class="hero-lines">
-            <div class="hero-square hero-square-one"></div>
-            <div class="hero-square hero-square-two"></div>
-            <div class="hero-square hero-square-three"></div>
-            <div class="hero-center-dot"></div>
+
+        <div class="home-hero-art">
+            <svg viewBox="0 0 520 470" role="img" aria-label="Blueprint drawing of a Celeris robot with lift, claw and drivetrain">
+                <defs>
+                    <pattern id="bp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity="0.07"/>
+                    </pattern>
+                </defs>
+                <rect x="1" y="1" width="518" height="468" fill="url(#bp-grid)" stroke="#444444"/>
+
+                <!-- gold corner brackets -->
+                <g fill="none" stroke="#b58a32" stroke-width="3">
+                    <path d="M1 26V1H26"/>
+                    <path d="M494 1H519V26"/>
+                    <path d="M1 444V469H26"/>
+                    <path d="M494 469H519V444"/>
+                </g>
+
+                <g fill="none" stroke="#f5f2eb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                    <!-- ground -->
+                    <path d="M40 393H480" stroke-dasharray="6 6" stroke-opacity="0.5"/>
+
+                    <!-- wheels -->
+                    <g fill="#1a1a1a">
+                        <circle cx="155" cy="345" r="48"/>
+                        <circle cx="365" cy="345" r="48"/>
+                    </g>
+                    <circle cx="155" cy="345" r="20"/>
+                    <circle cx="365" cy="345" r="20"/>
+                    <path d="M155 297V393M107 345H203M121 311L189 379M189 311L121 379" stroke-opacity="0.4" stroke-width="1"/>
+                    <path d="M365 297V393M317 345H413M331 311L399 379M399 311L331 379" stroke-opacity="0.4" stroke-width="1"/>
+
+                    <!-- lift slides -->
+                    <rect x="200" y="70" width="22" height="200" fill="#1a1a1a"/>
+                    <rect x="228" y="92" width="22" height="178" fill="#1a1a1a"/>
+                    <path d="M200 100H222M200 130H222M200 160H222M200 190H222M200 220H222M200 250H222" stroke-opacity="0.5" stroke-width="1"/>
+
+                    <!-- arm -->
+                    <rect x="250" y="100" width="150" height="22" rx="4" transform="rotate(14 250 111)" fill="#1a1a1a"/>
+
+                    <!-- claw -->
+                    <path d="M398 136L438 130M398 160L438 168"/>
+
+                    <!-- chassis -->
+                    <rect x="90" y="270" width="340" height="52" rx="6" fill="#1a1a1a"/>
+                </g>
+
+                <!-- gold details -->
+                <g fill="none" stroke="#b58a32" stroke-width="2">
+                    <rect x="280" y="282" width="70" height="28" rx="3"/>
+                    <path d="M120 54L211 80M438 149L466 104M110 296L60 240"/>
+                    <path d="M90 420V440M430 420V440M90 430H430"/>
+                </g>
+                <g fill="#b58a32">
+                    <circle cx="315" cy="296" r="4"/>
+                    <circle cx="211" cy="80" r="5"/>
+                    <circle cx="438" cy="149" r="5"/>
+                    <circle cx="110" cy="296" r="5"/>
+                </g>
+                <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#b58a32">
+                    <text x="36" y="58">01 LIFT</text>
+                    <text x="420" y="92">02 CLAW</text>
+                    <text x="36" y="232">03 DRIVETRAIN</text>
+                    <text x="260" y="424" text-anchor="middle">18 IN</text>
+                </g>
+            </svg>
         </div>
-        <div class="hero-side-label">FTC ROBOTICS</div>
     </section>
 
-    <section class="ftc-intro">
-        <div class="section-label">FIRST TECH CHALLENGE</div>
-        <div class="ftc-grid">
-            <div class="ftc-heading">
-                <h2>More than<br><span>a robot.</span></h2>
-            </div>
-            <div class="ftc-description">
-                <p>FTC challenges students to design, build, program, and operate robots in a competitive environment.</p>
-                <p>At Celeris, we approach every season as an opportunity to learn, experiment, compete, and grow together.</p>
-                <a href="about.html" class="text-link">Learn about our team <span>→</span></a>
-            </div>
+    <!-- STATS -->
+    <section class="home-stats">
+        <div class="home-stat">
+            <strong>9</strong>
+            <p>STUDENT MEMBERS</p>
+        </div>
+        <div class="home-stat">
+            <strong>2</strong>
+            <p>COACHES</p>
+        </div>
+        <div class="home-stat">
+            <strong>1</strong>
+            <p>ROBOT</p>
+        </div>
+        <div class="home-stat">
+            <strong>4<span>+</span></strong>
+            <p>DISCIPLINES</p>
         </div>
     </section>
 
-    <section class="capabilities">
-        <div class="capabilities-header">
-            <div>
-                <p class="section-label">EXPLORE</p>
-                <h2>Find your<br>way around.</h2>
-            </div>
-            <p>Take a closer look at the machine, the season, the people who support us, and how you can get involved.</p>
+    <!-- TICKER -->
+    <div class="home-ticker" aria-hidden="true">
+        <div class="home-ticker-track">
+            <span>BUILD</span><i>◆</i><span>COMPETE</span><i>◆</i><span>IMPACT</span><i>◆</i><span>DESIGN</span><i>◆</i><span>TEST</span><i>◆</i><span>REPEAT</span><i>◆</i>
+            <span>BUILD</span><i>◆</i><span>COMPETE</span><i>◆</i><span>IMPACT</span><i>◆</i><span>DESIGN</span><i>◆</i><span>TEST</span><i>◆</i><span>REPEAT</span><i>◆</i>
         </div>
-        <div class="capability-grid">
-            <article class="capability-card">
-                <div class="capability-number">01</div>
-                <div class="capability-icon">⚙</div>
+    </div>
+
+    <!-- EXPLORE TILES -->
+    <section class="home-explore">
+        <div class="home-explore-head">
+            <p class="section-label">EXPLORE THE TEAM</p>
+            <h2>Pick a<br><span>path.</span></h2>
+        </div>
+
+        <div class="home-tiles">
+
+            <a href="robot.html" class="home-tile dark">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                    <circle cx="60" cy="60" r="38" stroke-width="12" stroke-dasharray="11.94 11.94"/>
+                    <circle cx="60" cy="60" r="30"/>
+                    <circle cx="60" cy="60" r="10" stroke="#b58a32"/>
+                </svg>
+                <div class="home-tile-num">01</div>
                 <h3>Our Robot</h3>
                 <p>See how we design, build, and program a machine that is reliable when it matters most.</p>
-                <a href="robot.html" class="text-link">View the robot <span>→</span></a>
-            </article>
-            <article class="capability-card">
-                <div class="capability-number">02</div>
-                <div class="capability-icon">◇</div>
-                <h3>Season</h3>
-                <p>Follow our cycle of designing, building, testing, and competing.</p>
-                <a href="season.html" class="text-link">See the season <span>→</span></a>
-            </article>
-            <article class="capability-card">
-                <div class="capability-number">03</div>
-                <div class="capability-icon">↗</div>
+                <span class="home-tile-link">View the robot <span>→</span></span>
+            </a>
+
+            <a href="season.html" class="home-tile light">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                    <circle cx="60" cy="60" r="40" stroke-dasharray="4 8"/>
+                    <circle cx="60" cy="20" r="7" fill="#b58a32" stroke="#b58a32"/>
+                    <circle cx="100" cy="60" r="7"/>
+                    <circle cx="60" cy="100" r="7"/>
+                    <circle cx="20" cy="60" r="7"/>
+                </svg>
+                <div class="home-tile-num">02</div>
+                <h3>The Season</h3>
+                <p>Follow our cycle of designing, building, testing, and competing, from the workshop to the field.</p>
+                <span class="home-tile-link">See the season <span>→</span></span>
+            </a>
+
+            <a href="sponsors.html" class="home-tile light">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                    <path d="M60 42V64M60 72L32 82M60 72L88 82M47 30L30 78M73 30L90 78"/>
+                    <circle cx="60" cy="28" r="12" fill="var(--stone)"/>
+                    <circle cx="25" cy="90" r="12" fill="var(--stone)"/>
+                    <circle cx="95" cy="90" r="12" fill="var(--stone)"/>
+                    <circle cx="60" cy="70" r="7" fill="#b58a32" stroke="#b58a32"/>
+                </svg>
+                <div class="home-tile-num">03</div>
                 <h3>Sponsors</h3>
-                <p>Meet the community that makes it possible for us to keep learning and competing.</p>
-                <a href="sponsors.html" class="text-link">Support us <span>→</span></a>
-            </article>
-            <article class="capability-card">
-                <div class="capability-number">04</div>
-                <div class="capability-icon">&lt;/&gt;</div>
+                <p>Meet the mentors, families, and community that make it possible for us to keep competing.</p>
+                <span class="home-tile-link">Support the team <span>→</span></span>
+            </a>
+
+            <a href="contact.html" class="home-tile dark">
+                <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                    <rect x="15" y="32" width="90" height="62" rx="4"/>
+                    <path d="M15 36L60 70L105 36"/>
+                    <circle cx="100" cy="30" r="9" fill="#b58a32" stroke="#b58a32"/>
+                </svg>
+                <div class="home-tile-num">04</div>
                 <h3>Contact</h3>
                 <p>Join the team, mentor, or partner with us. We would love to hear from you.</p>
-                <a href="contact.html" class="text-link">Get in touch <span>→</span></a>
-            </article>
+                <span class="home-tile-link">Get in touch <span>→</span></span>
+            </a>
+
         </div>
     </section>
 
-    <section class="contact-section">
-        <div>
-            <p class="section-label">GET INVOLVED</p>
-            <h2>Let's build<br><span>what's next.</span></h2>
-        </div>
-        <div class="contact-content">
-            <p>Interested in joining Celeris, supporting the team, mentoring, or partnering with us?</p>
-            <a href="contact.html" class="dark-button">Contact Celeris <span>→</span></a>
+    <!-- TEAM ROLES -->
+    <section class="home-team">
+        <div class="home-team-grid">
+            <div class="home-team-copy">
+                <p class="section-label">THE PEOPLE</p>
+                <h2>Three teams.<br><span>One robot.</span></h2>
+                <p>Everyone on Celeris has a place to pursue what they love, and every part comes together on the field.</p>
+                <a href="about.html" class="text-link">Meet the team <span>→</span></a>
+            </div>
+
+            <div class="home-roles">
+                <div class="home-role">
+                    <div class="home-role-count">03</div>
+                    <div>
+                        <h3>Team Leadership</h3>
+                        <p>A captain and two vice captains guiding the team through the season.</p>
+                    </div>
+                </div>
+                <div class="home-role">
+                    <div class="home-role-count">03</div>
+                    <div>
+                        <h3>CAD Team</h3>
+                        <p>Designers modeling every mechanism before it is ever built.</p>
+                    </div>
+                </div>
+                <div class="home-role">
+                    <div class="home-role-count">03</div>
+                    <div>
+                        <h3>Software Team</h3>
+                        <p>Engineers writing the autonomous routines and driver controls.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- CTA BANNER -->
+    <section class="home-cta">
+        <svg class="home-cta-art" viewBox="0 0 520 520" fill="none" aria-hidden="true">
+            <g transform="rotate(45 260 260)" stroke="#ffffff" stroke-opacity="0.35">
+                <rect x="10" y="10" width="500" height="500"/>
+                <rect x="85" y="85" width="350" height="350"/>
+                <rect x="165" y="165" width="190" height="190" stroke-width="2"/>
+            </g>
+            <circle cx="260" cy="260" r="9" fill="#b58a32"/>
+        </svg>
+
+        <div class="home-cta-content">
+            <p class="section-label">GET INVOLVED</p>
+            <h2>Let's build<br><span>what's next.</span></h2>
+            <p>Interested in joining Celeris, supporting the team, mentoring, or partnering with us?</p>
+            <div class="home-cta-buttons">
+                <a href="contact.html" class="dark-button">Contact Celeris <span>→</span></a>
+                <a href="sponsors.html" class="home-outline-btn">Become a Sponsor <span>→</span></a>
+            </div>
+        </div>
+    </section>
+
 </main>
+<script src="intro.js" defer></script>
 </body>
 </html>
