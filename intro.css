@@ -43,6 +43,13 @@
     position: absolute;
     inset: 0;
     background: #0e0e0e;
+    will-change: opacity;
+}
+
+/* keep the page underneath still while the intro runs, so the animation stays smooth */
+.intro-running .home-hero-art svg,
+.intro-running .home-ticker-track {
+    animation-play-state: paused;
 }
 
 .intro-word {
@@ -74,6 +81,8 @@
     width: var(--intro-logo);
     height: var(--intro-logo);
     will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .intro-logo img {
