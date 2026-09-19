@@ -256,6 +256,211 @@
             aspect-ratio: 4 / 4.4;
         }
     }
+
+    /* ----- bio panel + connector line ----- */
+
+    .about-heading {
+        align-self: stretch;
+    }
+
+    .about-heading h2 {
+        position: static;
+    }
+
+    .bio-panel {
+        position: sticky;
+        top: 40px;
+        margin-top: 36px;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        padding: 26px;
+        border: 1px dashed rgba(17, 17, 17, 0.22);
+        border-radius: 14px;
+        background: transparent;
+        color: #111111;
+        transition: background 0.4s ease, border-color 0.4s ease,
+                    color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .bio-hint {
+        margin: 0;
+        color: #8c877c;
+        font-size: 13px;
+        line-height: 1.6;
+        letter-spacing: 0.3px;
+    }
+
+    .bio-hint::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 3px;
+        margin-bottom: 12px;
+        border-radius: 2px;
+        background: #ffa700;
+        opacity: 0.6;
+    }
+
+    .bio-body {
+        display: none;
+    }
+
+    .bio-panel.is-active {
+        border: 1px solid #111111;
+        background: #111111;
+        color: #ffffff;
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .bio-panel.is-active .bio-hint {
+        display: none;
+    }
+
+    .bio-panel.is-active .bio-body {
+        display: block;
+    }
+
+    .bio-role {
+        margin: 0 0 8px 0;
+        color: #ffc04d;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        line-height: 1.4;
+        text-transform: uppercase;
+    }
+
+    .bio-name {
+        margin: 0 0 16px 0;
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+    }
+
+    .bio-name::after {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 3px;
+        margin-top: 14px;
+        border-radius: 2px;
+        background: #ffa700;
+    }
+
+    .bio-text p {
+        margin: 0 0 12px 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13.5px;
+        line-height: 1.65;
+    }
+
+    .bio-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .bio-close {
+        display: none;
+    }
+
+    .bio-line {
+        position: fixed;
+        inset: 0;
+        z-index: 25;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+    }
+
+    .bio-line.on {
+        opacity: 1;
+    }
+
+    .bio-line path {
+        fill: none;
+        stroke: #ffa700;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+    }
+
+    .bio-line circle {
+        fill: #ffa700;
+    }
+
+    .member:focus-visible {
+        outline: 2px solid #ffa700;
+        outline-offset: 3px;
+    }
+
+    /* phones / touch screens: tap a card, bio slides up from the bottom */
+    @media (max-width: 1000px), (hover: none) {
+        .member {
+            cursor: pointer;
+        }
+
+        .bio-line {
+            display: none;
+        }
+
+        .bio-hint {
+            display: none;
+        }
+
+        .bio-panel {
+            position: fixed;
+            top: auto;
+            right: 12px;
+            bottom: 12px;
+            left: 12px;
+            z-index: 30;
+            max-height: 65vh;
+            margin: 0;
+            padding: 26px 26px 24px;
+            border: 1px solid #111111;
+            background: #111111;
+            color: #ffffff;
+            box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
+            visibility: hidden;
+            transform: translateY(calc(100% + 24px));
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.45s;
+        }
+
+        .bio-panel.is-active {
+            visibility: visible;
+            transform: none;
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+        }
+
+        .bio-body {
+            display: block;
+        }
+
+        .bio-name {
+            padding-right: 36px;
+        }
+
+        .bio-close {
+            display: block;
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+        }
+    }
     </style>
     <script src="index.js"></script>
 </head>
@@ -323,13 +528,23 @@
         <div class="about-grid">
             <div class="about-heading">
                 <h2>Nine <span>Members.</span><br>Two <span>Coaches.</span><br>One <span>Robot.</span></h2>
+
+                <aside class="bio-panel" id="bio-panel" aria-live="polite">
+                    <button class="bio-close" type="button" aria-label="Close">&times;</button>
+                    <p class="bio-hint">Hover over a teammate to read their story.</p>
+                    <div class="bio-body">
+                        <p class="bio-role"></p>
+                        <h3 class="bio-name"></h3>
+                        <div class="bio-text"></div>
+                    </div>
+                </aside>
             </div>
             <div class="team-section">
                 <div class="section-titles">
                     <h2>Team Leadership</h2>
                 </div>
                 <div class="team-members">
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Tianmu.png" alt="Tianmu Sha">
                         </div>
@@ -338,8 +553,12 @@
                             <h3>Tianmu Sha</h3>
                             <p class="member-role">Team Captain</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>Hi, my name is Tianmu Sha, and I am the captain and founder of Celeris Robotics. I am a rising freshman of West Windsor-Plainsboro High School South, and I enjoy STEM topics like Math, Engineering, Computer Science, and Physics. Outside of STEM, I like playing piano, violin, and tennis. In addition, I have made fun projects like a small web browser based multiplayer video game, a treasure chest out of wood, and a motorized nerf dart flywheel shooter out of lego!</p>
+                            <p>Every meeting I try to learn something new and grow as a person, whether it’s a interesting coding algorithm, innovative design contraption, or just how to be a better captain! I am excited to compete this year and I hope to bring innovation, creativity, and collaboration to this robotics team.</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Krish.png" alt="Krish Raghav">
                         </div>
@@ -349,8 +568,12 @@
                             <p class="member-role">Vice Captain</p>
                         <p class="member-sub">Software Lead</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>I am Krishnan Raghavendran and I am a prospective freshman from West Windsor, NJ who is interested in technology. I have experience in working on microcontrollers like Arduino, ESP32 and the Raspberry Pi. My technical interests are app development using Kotlin, Python, Java, and web development. For the last two years, I have participated in the FIRST Tech Challenge (FTC).</p>
+                            <p>In my spare time, I enjoy playing the piano, cycling and also swimming and computer assembly. I would love to enhance my knowledge of general mechanics and engineering fundamentals. Some of my projects so far have been a wearable for posture correction and a self-balancing robot. This season, as a vice captain, I hope to work with my FTC team in a way where we can build a masterpiece that is accurate and efficient, while also providing the experience I have gained.</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Rituraj.png" alt="Rituraj Pramanik">
                         </div>
@@ -360,6 +583,10 @@
                             <p class="member-role">Vice Captain</p>
                         <p class="member-sub">Software Engineer</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>Hello! My name is Rituraj Pramanik, currently in 9th grade, attending West Windsor - Plainsboro High School South. I am a student who is passionate about STEM, especially computer science, robotics, and engineering. For example, I have worked on mini projects involving programming, building web applications and engineering, which developed practical skills that I can use in the real world.</p>
+                            <p>I hope to continue building my abilities in languages such as Python and Java, while gaining hands-on experience through team projects and competitions. Ultimately, my goal is to grow as a STEM student and further progress myself, helping my robotics team accomplish goals and create projects that we can be proud of.</p>
+                        </div>
                     </article>
                 </div>
 
@@ -367,7 +594,7 @@
                     <h2>CAD Team</h2>
                 </div>
                 <div class="team-members">
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Avyaan.png" alt="Avyaan Nischal">
                         </div>
@@ -376,8 +603,12 @@
                             <h3>Avyaan Nischal</h3>
                             <p class="member-role">CAD Leader</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>Greetings! My name is Avyaan Nishchal and I am a member of the CAD team of Celeris Robotics. I am a ninth grader at West-Windsor Plainsboro High School South. STEM subjects are the core of my special interests. I have been a member of my school’s Mathcounts team two years in a row, and I specifically took classes with hands-on activities so that I could learn the basics of real life engineering. It was my dream of being a part of a robotics team from a young age as I marveled at the thought that a printed piece of metal could be useful in so many ways.</p>
+                            <p>My aspiration is to convert my robotics dreams into reality this year. I want to improve my skills in CAD since it holds an immense future potential evolving into a much larger digital environment. However, by far my most important goal is to be a valued member of a team I love being part of and a team that all of us are proud of.</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/AdvayGarg.png" alt="Advay Garg">
                         </div>
@@ -386,8 +617,12 @@
                             <h3>Advay Garg</h3>
                             <p class="member-role">CAD Modeler</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>I am Advay Garg, and I'm excited to join the FTC robotics team this season. I've always loved construction projects and building with LEGO toys. I tend to put my creative spin in the way I construct. I love math as well, and I've been on the MathCounts team at school for all three years of my middle school career. In addition, I’ve taken part in the AMC 8 competition.</p>
+                            <p>Due to my passion for construction, math, and problem solving, I will be helping out with the CAD and assembly of our team this season. I'm thrilled to bring my creative insights, problem-solving skills, and ideas to the team this season. I can't wait for the season to start so I can further implement my ideas on our robot.</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/AadithSayini.png" alt="Aadith Sayini">
                         </div>
@@ -396,6 +631,10 @@
                             <h3>Aadith Sayini</h3>
                             <p class="member-role">CAD Modeler</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>My name is Aadith Sayini, and I love to be active in a variety of extracurricular activities, including basketball, lacrosse, and more. I have not entered into many stem projects or competitions, but I have honed my engineering and cad skills through middle school, and hope to climb to greater heights going forward, through competitions such as ftc.</p>
+                            <p>For Celeris Robotics, I bring not just 2 years of cad experience, but a love for engineering from primary school, where I was simply exercising my creativity, into middle school, where I learned how to apply this creativity and to think like an engineer through the engineering design circle. I hope to bring my experience and love for engineering this season!</p>
+                        </div>
                     </article>
                 </div>
 
@@ -403,7 +642,7 @@
                     <h2>Software Team</h2>
                 </div>
                 <div class="team-members">
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Anay.png" alt="Anay Singh">
                         </div>
@@ -412,8 +651,12 @@
                             <h3>Anay Singh</h3>
                             <p class="member-role">Software Engineer</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>My name is Anay Singh, and I am extremely excited to take part in this year's FTC robotics season. One thing about me is that I often experiment with different hardware for fun! For example, for a STEM project in school, I was responsible for wiring and programming the components for a ping-pong ball launcher. I also was responsible for creating the website for my Community-Problem Solving team (keepitflowing.org). Outside of school, I enjoy tennis, running, and playing the guitar.</p>
+                            <p>I'm looking forward to bringing my creativity and problem solving skills to my team. I love collaborating with others, as I always try to make myself useful in different situations. Finally, I am excited to learn new skills from everyone on the team and make new memories!</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/AryaPahari.png" alt="Arya Pahari">
                         </div>
@@ -422,8 +665,12 @@
                             <h3>Arya Pahari</h3>
                             <p class="member-role">Software Engineer</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>My name is Arya Pahari, and I am a proud member of our FTC robotics group. Growing up, I have always been around building blocks, and as I built my imaginary world, I built me with it. Now, I can show and share my skills by coding robots, seeing how the rest of my team is doing an upscaled version of my playing.</p>
+                            <p>Being able to extend my passion and childhood is truly something I value. Beyond academics, I enjoy playing tennis, socializing, and constantly challenging myself, not just with something new, but harder variants of already mastered skills. I look forward to a great season with my team and your generous support!</p>
+                        </div>
                     </article>
-                    <article class="member">
+                    <article class="member" tabindex="0">
                         <div class="member-photo">
                             <img src="images/Saharsh.png" alt="Saharsh Devaraju">
                         </div>
@@ -432,11 +679,132 @@
                             <h3>Saharsh Devaraju</h3>
                             <p class="member-role">Software Engineer</p>
                         </div>
+                        <div class="member-bio" hidden>
+                            <p>Hi! My name is Saharsh Devaraju. I am currently in 9th grade in the West-Windsor Plainsboro High School South (HSS). One of my major interests is the field of philosophy, as it really appeals to my core pillars, serving as a space where different worldviews can be logically addressed and argued. Outside of academics, I enjoy playing soccer, football, basketball, as well as a few other sports, as well as partaking in come graphic design, editing, and digital media. To put my skills in graphic media to use, I participate in competitions like the Breakthrough Junior Challenge.</p>
+                            <p>In the future, I hope to develop my general skills further, improving my comprehension of languages like c/cpp and Java. I aim to build my real-world experience by participating in more competitions and actively being a contributing member of my team. In essence, I hope to be a valuable addition, learning and growing along with my peers, ultimately pushing my robotics team to success.</p>
+                        </div>
                     </article>
                 </div>
             </div>
         </div>
     </section>
 </main>
+<svg class="bio-line" id="bio-line" aria-hidden="true">
+    <path id="bio-path" pathLength="1"></path>
+    <circle id="bio-dot-start" r="4"></circle>
+    <circle id="bio-dot-end" r="5"></circle>
+</svg>
+
+<script>
+(function () {
+    var panel = document.getElementById('bio-panel');
+    var svg = document.getElementById('bio-line');
+    var path = document.getElementById('bio-path');
+    var dotStart = document.getElementById('bio-dot-start');
+    var dotEnd = document.getElementById('bio-dot-end');
+    var teamSection = document.querySelector('.team-section');
+    var bodyEl = panel.querySelector('.bio-body');
+    var nameEl = panel.querySelector('.bio-name');
+    var roleEl = panel.querySelector('.bio-role');
+    var textEl = panel.querySelector('.bio-text');
+    var closeBtn = panel.querySelector('.bio-close');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.member'));
+    var sheetMQ = window.matchMedia('(max-width: 1000px), (hover: none)');
+    var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+    var current = null, raf = null, resetTimer = null, anims = [];
+
+    function isSheet() { return sheetMQ.matches; }
+
+    function fill(card) {
+        var role = card.querySelector('.member-role').textContent;
+        var sub = card.querySelector('.member-sub');
+        nameEl.textContent = card.querySelector('h3').textContent;
+        roleEl.textContent = role + (sub ? ' \u00b7 ' + sub.textContent : '');
+        textEl.innerHTML = card.querySelector('.member-bio').innerHTML;
+    }
+
+    /* line runs from the box, through the empty gutters, down onto the card
+       (never across the other cards) */
+    function route() {
+        if (!current) return;
+        var pr = panel.getBoundingClientRect();
+        var cr = current.getBoundingClientRect();
+        var tr = teamSection.getBoundingClientRect();
+        var sx = pr.right, sy = pr.top + Math.min(pr.height / 2, 60);
+        var gx = (pr.right + tr.left) / 2;
+        var ly = cr.top - 10;
+        var ex = cr.left + cr.width / 2, ey = cr.top;
+        path.setAttribute('d', 'M' + sx + ' ' + sy + ' H' + gx + ' V' + ly + ' H' + ex + ' V' + ey);
+        dotStart.setAttribute('cx', sx); dotStart.setAttribute('cy', sy);
+        dotEnd.setAttribute('cx', ex); dotEnd.setAttribute('cy', ey);
+    }
+
+    function loop() { route(); raf = requestAnimationFrame(loop); }
+
+    function draw() {
+        anims.forEach(function (a) { a.cancel(); });
+        anims = [
+            path.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
+                { duration: 700, easing: EASE, fill: 'forwards' }),
+            dotStart.animate([{ opacity: 0 }, { opacity: 1 }],
+                { duration: 200, fill: 'both' }),
+            dotEnd.animate([{ opacity: 0 }, { opacity: 1 }],
+                { duration: 200, delay: 560, fill: 'both' }),
+            bodyEl.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+                { duration: 450, easing: EASE })
+        ];
+    }
+
+    function activate(card) {
+        clearTimeout(resetTimer);
+        if (current === card) return;
+        current = card;
+        fill(card);
+        panel.classList.add('is-active');
+        if (!isSheet()) {
+            route();
+            svg.classList.add('on');
+            draw();
+            cancelAnimationFrame(raf);
+            loop();
+        } else {
+            bodyEl.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 350 });
+        }
+    }
+
+    function reset() {
+        current = null;
+        panel.classList.remove('is-active');
+        svg.classList.remove('on');
+        cancelAnimationFrame(raf);
+    }
+
+    function scheduleReset() {
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(reset, 300);
+    }
+
+    cards.forEach(function (card) {
+        card.addEventListener('mouseenter', function () { if (!isSheet()) activate(card); });
+        card.addEventListener('mouseleave', function () { if (!isSheet()) scheduleReset(); });
+        card.addEventListener('focus', function () { if (!isSheet()) activate(card); });
+        card.addEventListener('blur', function () { if (!isSheet()) scheduleReset(); });
+        card.addEventListener('click', function (e) {
+            if (isSheet()) { e.stopPropagation(); current = null; activate(card); }
+        });
+    });
+
+    /* let people move onto the box (to scroll a long bio) without it closing */
+    panel.addEventListener('mouseenter', function () { if (!isSheet()) clearTimeout(resetTimer); });
+    panel.addEventListener('mouseleave', function () { if (!isSheet()) scheduleReset(); });
+
+    closeBtn.addEventListener('click', reset);
+    document.addEventListener('click', function (e) {
+        if (isSheet() && !panel.contains(e.target)) reset();
+    });
+    if (sheetMQ.addEventListener) sheetMQ.addEventListener('change', reset);
+})();
+</script>
 </body>
 </html>
