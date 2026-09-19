@@ -1,0 +1,108 @@
+/* ===== NAV LOGO (used on every page) ===== */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    display: block;
+    height: 38px;
+    width: auto;
+}
+
+/* ===== INTRO ANIMATION (only shows on the homepage, once per visit) ===== */
+.intro {
+    --intro-logo: clamp(150px, 19vw, 260px);
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-running .intro {
+    display: flex;
+}
+
+.intro-running body {
+    overflow: hidden;
+}
+
+/* hide the real nav logo + words until the intro hands them over */
+.intro-running .nav-logo {
+    visibility: hidden;
+}
+
+.intro-running .nav-word {
+    opacity: 0;
+}
+
+.intro-bg {
+    position: absolute;
+    inset: 0;
+    background: #0e0e0e;
+}
+
+.intro-word {
+    position: relative;
+    flex: 1;
+    padding: 0 clamp(14px, 4.5vw, 70px);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(11px, 1.35vw, 17px);
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    white-space: nowrap;
+    color: #e9e9e9;
+    opacity: 0;
+    will-change: transform, filter, opacity;
+}
+
+.intro-word-left {
+    text-align: right;
+}
+
+.intro-word-right {
+    text-align: left;
+    color: var(--gold, #b58a32);
+}
+
+.intro-logo {
+    position: relative;
+    flex: none;
+    width: var(--intro-logo);
+    height: var(--intro-logo);
+    will-change: transform;
+}
+
+.intro-logo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    will-change: transform, filter, opacity;
+}
+
+@media (max-width: 600px) {
+    .intro {
+        --intro-logo: 120px;
+    }
+
+    .intro-word {
+        letter-spacing: 0.25em;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    .nav-brand {
+        gap: 9px;
+    }
+
+    .nav-logo {
+        height: 30px;
+    }
+}
