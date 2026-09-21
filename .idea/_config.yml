@@ -1,3 +1,4 @@
 theme: jekyll-theme-minimal
-title: "My Awesome Website"
+title: "Celeris Robotics Webpage"
+baseurl: ""
 favicon_path: "/assets/favicons"
