@@ -115,3 +115,33 @@
         height: 30px;
     }
 }
+
+/* ===== TITLE RISE (every page) =====
+   The big hero title glides upward into place when the page loads. */
+@keyframes title-rise {
+    from {
+        opacity: 0;
+        transform: translateY(36px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1,
+.home-hero h1 {
+    animation: title-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* on the homepage, wait for the intro to start revealing the page */
+.intro-running:not(.intro-reveal) .home-hero h1 {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero h1,
+    .home-hero h1 {
+        animation: none;
+    }
+}
