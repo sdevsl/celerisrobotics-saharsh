@@ -33,6 +33,7 @@
 
     function cleanup() {
         root.classList.remove('intro-running');
+        root.classList.remove('intro-reveal');
         navAnims.forEach(function (a) { try { a.cancel(); } catch (e) {} });
         if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
     }
@@ -136,6 +137,9 @@
 
         play(bg, [{ opacity: 1 }, { opacity: 0 }],
             { duration: T.bgFade, delay: T.bgDelay, easing: 'ease-in-out' });
+
+        /* as the dark background starts to fade, let the homepage title rise into place */
+        setTimeout(function () { root.classList.add('intro-reveal'); }, T.bgDelay + 250);
 
         navWords.forEach(function (w) {
             navAnims.push(play(w, [
