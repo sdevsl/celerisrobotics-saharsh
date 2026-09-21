@@ -605,69 +605,85 @@
         </div>
 
         <div class="home-hero-art">
-            <svg viewBox="0 0 520 470" role="img" aria-label="Blueprint drawing of a Celeris robot with lift, claw and drivetrain">
-                <defs>
-                    <pattern id="bp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity="0.07"/>
-                    </pattern>
-                </defs>
-                <rect x="1" y="1" width="518" height="468" fill="url(#bp-grid)" stroke="#444444"/>
-
-                <!-- gold corner brackets -->
-                <g fill="none" stroke="#b58a32" stroke-width="3">
-                    <path d="M1 26V1H26"/>
-                    <path d="M494 1H519V26"/>
-                    <path d="M1 444V469H26"/>
-                    <path d="M494 469H519V444"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500" role="img" aria-label="Blueprint drawing of a Celeris robot with a goBILDA flywheel outtake, gecko transfer wheels, a gecko intake and a drivetrain">
+              <defs>
+                <pattern id="bp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity="0.07"/>
+                </pattern>
+              </defs>
+              <rect x="0" y="0" width="520" height="500" fill="#111"/>
+              <rect x="1" y="1" width="518" height="498" fill="url(#bp-grid)" stroke="#444444"/>
+              <g fill="none" stroke="#b58a32" stroke-width="3">
+                <path d="M1 26V1H26"/><path d="M494 1H519V26"/>
+                <path d="M1 474V499H26"/><path d="M494 499H519V474"/>
+              </g>
+              <g fill="none" stroke="#f5f2eb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M30 410H490" stroke-dasharray="6 6" stroke-opacity="0.5"/>
+                <circle cx="100" cy="362" r="48" fill="#1a1a1a"/>
+                <g fill="none" stroke="#f5f2eb" stroke-linecap="round">
+                  <circle cx="100" cy="362" r="38.4" stroke-width="7.7" stroke-dasharray="7.7 6.7" stroke-opacity="0.3"/>
+                  <path d="M107.7 362L126.1 362M96.2 375.3L87 391.2M88.5 355.3L72.1 345.9M103.8 348.7L113 332.8M92.3 362L73.9 362M111.5 368.7L127.9 378.1" stroke-width="1.5" stroke-opacity="0.4"/>
+                  <circle cx="124" cy="362" r="2.6" fill="#f5f2eb" stroke="none"/>
                 </g>
-
-                <g fill="none" stroke="#f5f2eb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-                    <!-- ground -->
-                    <path d="M40 393H480" stroke-dasharray="6 6" stroke-opacity="0.5"/>
-
-                    <!-- wheels -->
-                    <g fill="#1a1a1a">
-                        <circle cx="155" cy="345" r="48"/>
-                        <circle cx="365" cy="345" r="48"/>
-                    </g>
-                    <circle cx="155" cy="345" r="20"/>
-                    <circle cx="365" cy="345" r="20"/>
-                    <path d="M155 297V393M107 345H203M121 311L189 379M189 311L121 379" stroke-opacity="0.4" stroke-width="1"/>
-                    <path d="M365 297V393M317 345H413M331 311L399 379M399 311L331 379" stroke-opacity="0.4" stroke-width="1"/>
-
-                    <!-- lift slides -->
-                    <rect x="200" y="70" width="22" height="200" fill="#1a1a1a"/>
-                    <rect x="228" y="92" width="22" height="178" fill="#1a1a1a"/>
-                    <path d="M200 100H222M200 130H222M200 160H222M200 190H222M200 220H222M200 250H222" stroke-opacity="0.5" stroke-width="1"/>
-
-                    <!-- arm -->
-                    <rect x="250" y="100" width="150" height="22" rx="4" transform="rotate(14 250 111)" fill="#1a1a1a"/>
-
-                    <!-- claw -->
-                    <path d="M398 136L438 130M398 160L438 168"/>
-
-                    <!-- chassis -->
-                    <rect x="90" y="270" width="340" height="52" rx="6" fill="#1a1a1a"/>
+                <circle cx="100" cy="362" r="9.6" fill="#1a1a1a"/>
+                <circle cx="420" cy="362" r="48" fill="#1a1a1a"/>
+                <g fill="none" stroke="#f5f2eb" stroke-linecap="round">
+                  <circle cx="420" cy="362" r="38.4" stroke-width="7.7" stroke-dasharray="7.7 6.7" stroke-opacity="0.3"/>
+                  <path d="M427.7 362L446.1 362M416.2 375.3L407 391.2M408.5 355.3L392.1 345.9M423.8 348.7L433 332.8M412.3 362L393.9 362M431.5 368.7L447.9 378.1" stroke-width="1.5" stroke-opacity="0.4"/>
+                  <circle cx="444" cy="362" r="2.6" fill="#f5f2eb" stroke="none"/>
                 </g>
-
-                <!-- gold details -->
-                <g fill="none" stroke="#b58a32" stroke-width="2">
-                    <rect x="280" y="282" width="70" height="28" rx="3"/>
-                    <path d="M120 54L211 80M438 149L466 104M110 296L60 240"/>
-                    <path d="M90 420V440M430 420V440M90 430H430"/>
+                <circle cx="420" cy="362" r="9.6" fill="#1a1a1a"/>
+                <rect x="56" y="300" width="408" height="52" rx="8" fill="#1a1a1a"/>
+                <path d="M76 340H180M300 340H444" stroke-opacity="0.3" stroke-dasharray="2 10" stroke-width="3"/>
+                <path d="M84 300V110L232 300Z" fill="#1a1a1a"/>
+                <path d="M84 170H130.7M84 230H177.5M84 170L177.5 230M84 230L224.2 290" stroke-opacity="0.3" stroke-width="1.5"/>
+                <rect x="170" y="146" width="12" height="90" fill="#1a1a1a"/>
+                <polygon points="208.5,111.8 386.5,218 379.5,229.8 201.5,123.6" fill="#1a1a1a"/>
+                <rect x="372" y="206" width="12" height="94" fill="#1a1a1a"/>
+                <circle cx="176" cy="104" r="46" fill="#1a1a1a"/>
+                <g fill="none" stroke="#f5f2eb" stroke-linecap="round">
+                  <circle cx="176" cy="104" r="36.8" stroke-width="7.4" stroke-dasharray="7.4 6.4" stroke-opacity="0.3"/>
+                  <path d="M183.4 104L201 104M172.4 116.8L163.6 132M172.4 91.2L156.7 82.2M179.6 91.2L188.4 76M168.6 104L151 104M179.6 116.8L195.3 125.8" stroke-width="1.5" stroke-opacity="0.4"/>
+                  <circle cx="199" cy="104" r="2.6" fill="#f5f2eb" stroke="none"/>
                 </g>
-                <g fill="#b58a32">
-                    <circle cx="315" cy="296" r="4"/>
-                    <circle cx="211" cy="80" r="5"/>
-                    <circle cx="438" cy="149" r="5"/>
-                    <circle cx="110" cy="296" r="5"/>
+                <circle cx="176" cy="104" r="9.2" fill="#1a1a1a"/>
+                <circle cx="424" cy="246" r="42" fill="#1a1a1a"/>
+                <g fill="none" stroke="#f5f2eb" stroke-linecap="round">
+                  <circle cx="424" cy="246" r="33.6" stroke-width="6.7" stroke-dasharray="6.7 5.9" stroke-opacity="0.3"/>
+                  <path d="M430.8 246L446.9 246M420.7 257.7L412.7 271.6M420.7 234.3L406.3 226.1M427.3 234.3L435.3 220.4M417.2 246L401.1 246M427.3 257.7L441.7 265.9" stroke-width="1.5" stroke-opacity="0.4"/>
+                  <circle cx="445" cy="246" r="2.6" fill="#f5f2eb" stroke="none"/>
                 </g>
-                <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#b58a32">
-                    <text x="36" y="58">01 LIFT</text>
-                    <text x="420" y="92">02 CLAW</text>
-                    <text x="36" y="232">03 DRIVETRAIN</text>
-                    <text x="260" y="424" text-anchor="middle">18 IN</text>
-                </g>
+                <circle cx="424" cy="246" r="8.4" fill="#1a1a1a"/>
+              </g>
+              <g fill="none" stroke="#b58a32" stroke-linejoin="round" stroke-linecap="round">
+                <circle cx="245" cy="129" r="24" fill="#b58a32" fill-opacity="0.16" stroke-width="2"/>
+                <circle cx="295" cy="159" r="24" fill="#b58a32" fill-opacity="0.16" stroke-width="2"/>
+                <circle cx="345" cy="189" r="24" fill="#b58a32" fill-opacity="0.16" stroke-width="2"/>
+              </g>
+              <g fill="none" stroke="#b58a32" stroke-linecap="round">
+                <circle cx="245" cy="129" r="19.2" stroke-width="4" stroke-dasharray="3.8 3.4" stroke-opacity="0.3"/>
+                <circle cx="295" cy="159" r="19.2" stroke-width="4" stroke-dasharray="3.8 3.4" stroke-opacity="0.3"/>
+                <circle cx="345" cy="189" r="19.2" stroke-width="4" stroke-dasharray="3.8 3.4" stroke-opacity="0.3"/>
+                <path d="M248.9 129H258.1M243.1 135.7L238.5 143.7M243.1 122.3L234.9 117.6M246.9 122.3L251.5 114.3M241.1 129H231.9M246.9 135.7L255.1 140.4" stroke-width="1.5" stroke-opacity="0.85"/>
+                <path d="M298.9 159H308.1M293.1 165.7L288.5 173.7M293.1 152.3L284.9 147.6M296.9 152.3L301.5 144.3M291.1 159H281.9M296.9 165.7L305.1 170.4" stroke-width="1.5" stroke-opacity="0.85"/>
+                <path d="M348.9 189H358.1M343.1 195.7L338.5 203.7M343.1 182.3L334.9 177.6M346.9 182.3L351.5 174.3M341.1 189H331.9M346.9 195.7L355.1 200.4" stroke-width="1.5" stroke-opacity="0.85"/>
+              </g>
+              <g fill="#b58a32"><circle cx="257" cy="129" r="2.6"/><circle cx="307" cy="159" r="2.6"/><circle cx="357" cy="189" r="2.6"/></g>
+              <circle cx="245" cy="129" r="4.8" fill="#1a1a1a" stroke="#b58a32" stroke-width="2"/>
+              <circle cx="295" cy="159" r="4.8" fill="#1a1a1a" stroke="#b58a32" stroke-width="2"/>
+              <circle cx="345" cy="189" r="4.8" fill="#1a1a1a" stroke="#b58a32" stroke-width="2"/>
+              <g fill="none" stroke="#b58a32" stroke-width="2">
+                <rect x="200" y="310" width="100" height="24" rx="3"/>
+                <path d="M118 42L143.5 71.5M245 105V72M424 204V132M66 396L52 420M56 462V486M464 462V486M56 474H464"/>
+              </g>
+              <g fill="#b58a32"><circle cx="250" cy="322" r="4"/><circle cx="143.5" cy="71.5" r="5"/><circle cx="245" cy="105" r="5"/><circle cx="424" cy="204" r="5"/><circle cx="66" cy="396" r="5"/></g>
+              <g font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2" fill="#b58a32">
+                <text x="36" y="38">01 GOBILDA FLYWHEEL OUTTAKE</text>
+                <text x="232" y="64">03 GOBILDA GECKO TRANSFER</text>
+                <text x="496" y="122" text-anchor="end">02 GOBILDA GECKO INTAKE</text>
+                <text x="36" y="438">04 GECKO WHEELS</text>
+                <text x="260" y="466" text-anchor="middle">18 IN</text>
+              </g>
             </svg>
         </div>
     </section>
