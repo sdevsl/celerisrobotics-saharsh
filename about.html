@@ -489,6 +489,10 @@
         overflow: hidden;
     }
 
+    .coach-block:has(.coach-info-scroll) {
+        align-items: stretch;
+    }
+
     .coach-photo {
         width: 420px;
         max-width: 45%;
@@ -508,7 +512,7 @@
     .coach-info {
         flex: 1;
         min-width: 260px;
-        padding: 40px;
+        padding: 44px 48px;
     }
 
     .coach-info h3 {
@@ -519,13 +523,52 @@
     .coach-info .member-role {
         color: var(--gold);
         font-weight: 700;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
 
+    /* intro paragraph: the warm, personal opening */
     .coach-info p.coach-bio-text {
-        font-size: 17px;
-        line-height: 1.4;
-        color: #333333;
+        font-size: 18px;
+        line-height: 1.65;
+        color: #2a2a2a;
+        margin-bottom: 22px;
+    }
+
+    /* divider between the intro and the academic background */
+    .coach-info hr {
+        border: none;
+        height: 1px;
+        background: rgba(17, 17, 17, 0.14);
+        margin: 0 0 22px;
+    }
+
+    /* small gold eyebrow label above the academic paragraph */
+    .coach-bio-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .coach-bio-label::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        background: var(--gold);
+        border-radius: 2px;
+    }
+
+    /* academic paragraph: quieter, denser, clearly secondary */
+    .coach-info p.coach-bio-academic {
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: #666666;
+        margin-bottom: 0;
     }
 
     @media (max-width: 700px) {
@@ -537,6 +580,14 @@
         .coach-photo {
             width: 100%;
             max-width: 100%;
+        }
+
+        .coach-info {
+            padding: 32px 26px;
+        }
+
+        .coach-bio-label {
+            justify-content: center;
         }
     }
         
@@ -779,7 +830,8 @@
                         <p class="member-role">Lead Coach / Mentor</p>
                         <p class="coach-bio-text">Dr. Jie Gao is a Professor of computer science at Rutgers University. Her research work is in theoretical computer science but she is passionate about coaching robotics teams for her local community. She has served as a lead coach for an FLL team in 2018-2019 and during Covid years coached a smaller 2-person team SPARK for World Robot Olympiad (WRO) from 2020-2023. Her WRO team had strong performance including achieving second place at the international competition, the highest position of US teams in history. It is the first time she coaches an FTC team, but she is excited about this new team Celeris Robotics and looks forward to a fun season.</p>
                         <hr>
-                        <p class="coach-bio-text">I am Professor of Computer Science department of Rutgers University. From 2005-2019 I was on faculty of Department of Computer Science, Stony Brook University. I received Ph.D degree from Department of Computer Science, Stanford University in 2004, under the guidance of Professor Leonidas Guibas and B.S. degree from the Special Class for the Gifted Young at University of Science and Technology of China in 1999. I spent the academic year 2004-2005 at Center for the Mathematics of Information, California Institute of Technology. I currently serve on the editorial board of ACM Transactions on Sensor Networks (ACM TOSN).</p>
+                        <p class="coach-bio-label">Academic Background</p>
+                        <p class="coach-bio-academic">I am Professor of Computer Science department of Rutgers University. From 2005-2019 I was on faculty of Department of Computer Science, Stony Brook University. I received Ph.D degree from Department of Computer Science, Stanford University in 2004, under the guidance of Professor Leonidas Guibas and B.S. degree from the Special Class for the Gifted Young at University of Science and Technology of China in 1999. I spent the academic year 2004-2005 at Center for the Mathematics of Information, California Institute of Technology. I currently serve on the editorial board of ACM Transactions on Sensor Networks (ACM TOSN).</p>
                     </div>
                 </div>
             </div>
