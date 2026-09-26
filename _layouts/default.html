@@ -1,1 +1,15 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    {% include custom-head.html %}
+    {% for css in page.stylesheets %}
+    <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
+</head>
+<body>
+    {{ content }}
+</body>
+</html>
