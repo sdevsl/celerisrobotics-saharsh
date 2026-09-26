@@ -476,23 +476,19 @@
     .coach-block {
         display: flex;
         align-items: center;
-        gap: 48px;
+        gap: 0;
         flex-wrap: wrap;
         background: var(--stone-light);
         border-radius: 18px;
-        padding: 40px;
-    }
-
-    .coach-info {
-        flex: 1;
-        min-width: 260px;
+        padding: 0;
+        overflow: hidden;
     }
 
     .coach-photo {
-        width: 320px;
+        width: 420px;
+        max-width: 45%;
         aspect-ratio: 4 / 5;
         flex-shrink: 0;
-        border-radius: 14px;
         overflow: hidden;
         background: linear-gradient(135deg, #2a2a2a, #111111);
     }
@@ -504,8 +500,14 @@
         object-position: center 20%;
     }
 
+    .coach-info {
+        flex: 1;
+        min-width: 260px;
+        padding: 40px;
+    }
+
     .coach-info h3 {
-        font-size: 26px;
+        font-size: 30px;
         margin-bottom: 6px;
     }
 
@@ -516,15 +518,20 @@
     }
 
     .coach-info p.coach-bio-text {
-        font-size: 19px;
+        font-size: 21px;
         line-height: 1.7;
         color: #333333;
     }
 
     @media (max-width: 700px) {
         .coach-block {
-            flex-direction: column-reverse;
+            flex-direction: column;
             text-align: center;
+        }
+
+        .coach-photo {
+            width: 100%;
+            max-width: 100%;
         }
     }
         
@@ -758,13 +765,13 @@
                 <div class="coach-divider"></div>
                 <div class="coach-section">
                     <div class="coach-block">
+                        <div class="coach-photo">
+                            <img src="assets/images/dr_JieGao.png" alt="Dr. Jie Gao">
+                        </div>
                         <div class="coach-info">
                             <h3>Dr. Jie Gao</h3>
                             <p class="member-role">Head Coach</p>
                             <p class="coach-bio-text">Dr. Jie Gao is a Professor of computer science at Rutgers University. Her research work is in theoretical computer science but she is passionate about coaching robotics teams for her local community. She has served as a lead coach for an FLL team in 2018-2019 and during Covid years coached a smaller 2-person team SPARK for World Robot Olympiad (WRO) from 2020-2023. Her WRO team had strong performance including achieving second place at the international competition, the highest position of US teams in history. It is the first time she coaches an FTC team, but she is excited about this new team Celeris Robotics and looks forward to a fun season.</p>
-                        </div>
-                        <div class="coach-photo">
-                            <img src="assets/images/dr_JieGao.png" alt="Dr. Jie Gao">
                         </div>
                     </div>
                 </div>
