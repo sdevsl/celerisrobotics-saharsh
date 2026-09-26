@@ -465,6 +465,62 @@
             cursor: pointer;
         }
     }
+
+    .coach-section {
+        margin-top: 90px;
+    }
+
+    .coach-block {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+        flex-wrap: wrap;
+        background: var(--stone-light);
+        border-radius: 18px;
+        padding: 40px;
+    }
+
+    .coach-photo {
+        width: 260px;
+        height: 260px;
+        flex-shrink: 0;
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #2a2a2a, #111111);
+    }
+
+    .coach-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+    }
+
+    .coach-info h3 {
+        font-size: 26px;
+        margin-bottom: 6px;
+    }
+
+    .coach-info .member-role {
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .coach-info p.coach-bio-text {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #333333;
+        max-width: 620px;
+    }
+
+    @media (max-width: 700px) {
+        .coach-block {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+        
     </style>
     <script src="index.js"></script>
 </head>
@@ -691,6 +747,23 @@
                         </div>
                     </article>
                 </div>
+
+                <div class="section-titles">
+                    <h2>Head Coach</h2>
+                </div>
+                <div class="coach-section">
+                    <div class="coach-block">
+                        <div class="coach-photo">
+                            <img src="assets/images/dr_JieGao.png" alt="Dr. Jie Gao">
+                        </div>
+                        <div class="coach-info">
+                            <h3>Dr. Jie Gao</h3>
+                            <p class="member-role">Head Coach</p>
+                            <p class="coach-bio-text">Dr. Jie Gao is a Professor of computer science at Rutgers University. Her research work is in theoretical computer science but she is passionate about coaching robotics teams for her local community. She has served as a lead coach for an FLL team in 2018-2019 and during Covid years coached a smaller 2-person team SPARK for World Robot Olympiad (WRO) from 2020-2023. Her WRO team had strong performance including achieving second place at the international competition, the highest position of US teams in history. It is the first time she coaches an FTC team, but she is excited about this new team Celeris Robotics and looks forward to a fun season.</p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
