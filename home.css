@@ -176,6 +176,8 @@
 
 /* EXPLORE TILES */
 .home-explore {
+    position: relative;
+    overflow: hidden;
     padding: 105px 7%;
     background: #ffffff;
 }
@@ -286,6 +288,8 @@
 
 /* TEAM ROLES */
 .home-team {
+    position: relative;
+    overflow: hidden;
     padding: 105px 7%;
     background: var(--stone-light);
 }
@@ -424,6 +428,47 @@
     transform: translateY(-50%);
     opacity: 0.6;
 }
+
+/* ===== BIOBUZZ HONEYCOMB BACKDROP ===== */
+/* Same faint, static honeycomb used site-wide (see style.css). The hero
+   keeps its own blueprint grid above instead, so the robot graphic reads as
+   engineering, and the honeycomb carries the BIOBUZZ thread everywhere else. */
+
+.home-explore::before,
+.home-team::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(30deg, rgba(181, 138, 50, 0.07) 12%, transparent 12.5%, transparent 87%, rgba(181, 138, 50, 0.07) 87.5%, rgba(181, 138, 50, 0.07)),
+        linear-gradient(150deg, rgba(181, 138, 50, 0.07) 12%, transparent 12.5%, transparent 87%, rgba(181, 138, 50, 0.07) 87.5%, rgba(181, 138, 50, 0.07)),
+        linear-gradient(30deg, rgba(181, 138, 50, 0.07) 12%, transparent 12.5%, transparent 87%, rgba(181, 138, 50, 0.07) 87.5%, rgba(181, 138, 50, 0.07)),
+        linear-gradient(150deg, rgba(181, 138, 50, 0.07) 12%, transparent 12.5%, transparent 87%, rgba(181, 138, 50, 0.07) 87.5%, rgba(181, 138, 50, 0.07)),
+        linear-gradient(60deg, rgba(181, 138, 50, 0.035) 25%, transparent 25.5%, transparent 75%, rgba(181, 138, 50, 0.035) 75%, rgba(181, 138, 50, 0.035)),
+        linear-gradient(60deg, rgba(181, 138, 50, 0.035) 25%, transparent 25.5%, transparent 75%, rgba(181, 138, 50, 0.035) 75%, rgba(181, 138, 50, 0.035));
+    background-size: 44px 76px;
+    background-position: 0 0, 0 0, 22px 38px, 22px 38px, 0 0, 22px 38px;
+}
+
+.home-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(30deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(30deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(150deg, rgba(255, 255, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.05) 87.5%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.025) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.025) 75%, rgba(255, 255, 255, 0.025)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.025) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.025) 75%, rgba(255, 255, 255, 0.025));
+    background-size: 44px 76px;
+    background-position: 0 0, 0 0, 22px 38px, 22px 38px, 0 0, 22px 38px;
+}
+
 
 /* TABLET */
 @media (max-width: 1100px) {
