@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="intro.css">
 
     <style>
-    /* ===== HOMEPAGE-ONLY STYLES (linked only from main.html) ===== */
+    /* ===== HOMEPAGE-ONLY STYLES (linked only from index.html
+        [admittedly, formally main.html. My bad temu! shouldve realized subdomains need index :/ BUT, fixed it now!]) ===== */
 
          /*Global CSS root beginning (underline hyperlinks)*/
 
@@ -605,14 +606,20 @@
         <span class="nav-word">ROBOTICS</span>
     </div>
     <ul class="nav-links">
-        <li><a href="main.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="robot.html">Our Robot</a></li>
         <li><a href="season.html">Season</a></li>
         <li><a href="sponsors.html">Sponsors</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="contact.html" class="nav-button">Join Our Journey <span>→</span></a>
+    <div class="nav-actions">
+        <a href="https://hcb.hackclub.com/donations/start/celeris-robotics" class="donate-button" target="_blank" rel="noopener">
+            <span class="donate-dot"></span>
+            Donate
+        </a>
+        <a href="contact.html" class="nav-button">Join Our Journey <span>→</span></a>
+    </div>
 </nav>
 
 <main>
