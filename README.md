@@ -15,4 +15,4 @@ This repository contains the HTML, CSS, JavaScript, and other assets used to bui
 
 Please [**donate to uphold the STEM education initiative!**](https://hcb.hackclub.com/donations/start/celeris-robotics) Your support is greatly appreciated!
 
-**Celeris Robotics — FTC**
+**Celeris Robotics —— FTC**
