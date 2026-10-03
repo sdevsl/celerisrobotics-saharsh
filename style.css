@@ -119,6 +119,81 @@ body {
     transform: translateY(-2px);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* quiet gold outline button; breathes and carries a small pulsing dot
+   so it reads as "worth a look" without competing with Join Our Journey */
+.donate-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--black);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition: background 0.25s ease, color 0.25s ease,
+                transform 0.25s ease, box-shadow 0.25s ease;
+    animation: donate-glow 3.2s ease-in-out infinite;
+}
+
+.donate-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: donate-dot-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes donate-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(181, 138, 50, 0);
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(181, 138, 50, 0.12);
+    }
+}
+
+@keyframes donate-dot-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+.donate-button:hover {
+    background: var(--gold);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(181, 138, 50, 0.28);
+    animation-play-state: paused;
+}
+
+.donate-button:hover .donate-dot {
+    background: #ffffff;
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .donate-button,
+    .donate-dot {
+        animation: none;
+    }
+}
+
 
 /* hero is for the kanye west people */
 
@@ -743,7 +818,7 @@ body {
 }
 
 
-/* SEASON */
+/* the season page shii */
 
 .season-section {
     padding: 105px 7%;
@@ -945,7 +1020,7 @@ body {
 }
 
 
-/* TABLET */
+/* TABLET ;) */
 
 @media (max-width: 1100px) {
 
@@ -955,6 +1030,10 @@ body {
 
     .nav-button {
         padding: 13px 16px;
+    }
+
+    .donate-button {
+        padding: 11px 14px;
     }
 
     .capability-grid {
@@ -1031,7 +1110,7 @@ body {
 }
 
 
-/* SMALL MOBILE */
+/* small mobile for 'em*/
 
 @media (max-width: 550px) {
 
@@ -1045,7 +1124,7 @@ body {
         font-size: 17px;
     }
 
-    .nav-button {
+    .nav-actions {
         display: none;
     }
 
