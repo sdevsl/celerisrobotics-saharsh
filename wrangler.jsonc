@@ -1,3 +1,5 @@
+//So Render, Cloudflare, and other services can work easier. Mostly cloudflare; Render is a bit trippy.
+
 {
   "name": "celerisrobotics-testing1",
   "compatibility_date": "2026-01-01",
