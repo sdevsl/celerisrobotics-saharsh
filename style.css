@@ -686,6 +686,15 @@ body {
     border: 1px solid #444444;
 }
 
+.robot-photo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    padding: 14px;
+}
+
 .robot-placeholder {
     display: flex;
     flex-direction: column;
